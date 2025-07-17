@@ -16,3 +16,14 @@ class Habit:
     def __str__(self):
         """Representa el objeto como una cadena legible."""
         return f"Hábito: {self.name} - Descripcion: {self.description} - Completado {len(self.completions)} veces."
+    
+    def to_dict(self):
+        """
+        Convierte el objeto habit en un diccionario.
+        Sirve para guardar los datos en formato JSON. 
+        """
+        return {
+            "name": self.name,
+            "description": self.description,
+            "completions": [ts.isoformat() for ts in self.completions] # Convierte datetime a cadena ISO
+        }
