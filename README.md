@@ -4,6 +4,4 @@ HabitTracker CLI, con el objetivo principal de crear una aplicacion sencilla que
 
 Tecnologias a usar: Python (con modulos estandar como json, datetime, pathlib), pytest para pruebas. 
 
-Almacenamiento: Archivo JSON. 
-
-git st
+Almacenamiento: Archivo JSON.
