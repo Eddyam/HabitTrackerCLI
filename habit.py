@@ -27,3 +27,11 @@ class Habit:
             "description": self.description,
             "completions": [ts.isoformat() for ts in self.completions] # Convierte datetime a cadena ISO
         }
+    
+    def from_dict(cls, data: dict):
+        # Convertir JSON a datetime
+        name = data.get("name")
+        description = data.get("description", "")
+        habit = cls(name, description)
+        habit.completions = [datetime.datetime.fromisoformat(ts) for ts in data.get("completions", [])]
+        return habit
