@@ -19,3 +19,11 @@ def load() -> list[Habit]:
     except json.JSONDecodeError:
         print("Error: El archivo habits.json está corrupto o vacio. Se iniciará con hábitos vacios.")
         return []
+
+def save_habits(habits: list[Habit]):
+    """
+    Guarda una lista de objetos Habit en el archivo JSON.
+    """
+    data_to_save = [habit.to_dict() for habit in habits]
+    with open(FILE_PATH, 'w', encoding='utf-8') as f: 
+        json.dump(data_to_save, f, indent=4) # Escribe la lista de diccionarios en el archivo.
