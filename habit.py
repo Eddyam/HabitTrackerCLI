@@ -28,6 +28,7 @@ class Habit:
             "completions": [ts.isoformat() for ts in self.completions] # Convierte datetime a cadena ISO
         }
     
+    @classmethod
     def from_dict(cls, data: dict):
         # Convertir JSON a datetime
         name = data.get("name")
