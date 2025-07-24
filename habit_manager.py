@@ -50,6 +50,24 @@ class HabitManager:
             print(f"{i + 1}. {habit.name} ({len(habit.completions)} veces completado.)")
         print("-------------------")
 
+    def show_habit_details(self, habit_name: str) -> bool: 
+        """Muestra la descripción y el historial de completitud de un hábito especifico."""
+        for habit in self.habits:
+            if habit.name.lower() == habit_name.lower():
+                print(f"\n--- Detalle del Hábito: {Colors.BLUE}{habit.name}{Colors.ENDC} ---")
+                print(f"Descripción: {habit.description if habit.description else 'N/A'}")
+                if not habit.completions:
+                    print("Este hábito aun no ha sido completado.")
+                else:
+                    print("Historial de completitud:")
+                    # Ordena de la mas reciente a la mas antigua
+                    for ts in sorted(habit.completions, reverse=True):
+                        print(f"    - {ts.strftime('%Y-%m-%d %H:%M:%S')}")
+                print("-------------------")
+                return True
+            print(f"Error: Hábito {habit_name} no encontrado.")
+            return False
+    
     def save_all_habits(self):
         """Metodo interno para guardar los hábitos actuales en el archivo JSON."""
         save_habits(self.habits)
