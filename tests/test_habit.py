@@ -21,7 +21,7 @@ def test_habit_to_from_dict_conversion():
     """Verifica que el hábito se convierte a diccionario correctamente."""
     original_habit = Habit("Meditar", "10 minutos de meditación")
     original_habit.add_completion(datetime.datetime(2025, 7, 10, 8, 0, 0))
-    original_habit.add_completion(datetime.datetime(205, 7, 11, 8, 0, 0))
+    original_habit.add_completion(datetime.datetime(2025, 7, 11, 8, 0, 0))
 
     # Convertir a diccionario
     habit_dict = original_habit.to_dict()
