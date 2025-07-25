@@ -80,6 +80,24 @@ class HabitManager:
         print(f"Error: Hábito {habit_name} no encontrado para eliminar.")
         return False
 
+    def get_summary(self):
+        """Genera y muestra un resumen general de todos los hábitos."""
+        if not self.habits:
+            print("No hay hábitos para resumir.")
+        
+        print("\n--- Resumen General de Hábitos ---")
+        for habit in self.habits:
+            last_completion = "Nunca"
+            if habit.completions:
+                last_completion_dt = max(habit.completions) # Completitud mas reciente
+                last_completion = last_completion_dt.strftime('%Y-%m-%d %H:%M:%S')
+            
+            print(f"Hábito: {habit.name}")
+            print(f" - Completado: {len(habit.completions)} veces")
+            print(f" - Último registro: {last_completion}")
+            print("---")
+        print("----------------------------")
+
     def save_all_habits(self):
         """Metodo interno para guardar los hábitos actuales en el archivo JSON."""
         save_habits(self.habits)
