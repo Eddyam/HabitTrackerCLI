@@ -26,24 +26,24 @@ def main():
         display_menu()
         choice = input("Elige un opción: ")
 
-        if choice == 1: 
+        if choice == '1': 
             name = input("Nombre del hábito: ")
             description = input("Descripción (opcional)")
             manager.add_habit(name, description) # Llama al manager para añadir un hábito.
-        elif choice == 2: 
+        elif choice == '2': 
             name = input("Nombre del hábito a marcar como completad: ")
             manager.complete_habit(name)
-        elif choice == 3: 
+        elif choice == '3': 
             manager.list_habits()
-        elif choice == 4: 
+        elif choice == '4': 
             name = input("Nombre del hábito para ver detalles: ")
             manager.show_habit_details(name)
-        elif choice == 5: 
+        elif choice == '5': 
             name = input("Nombre del hábito a eliminar: ")
             manager.delete_habit(name)
-        elif choice == 6: 
+        elif choice == '6': 
             manager.get_summary()
-        elif choice == 7:
+        elif choice == '7':
             print("!Hasta luego!")
             break
         else: 
