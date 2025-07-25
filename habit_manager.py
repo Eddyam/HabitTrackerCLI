@@ -68,6 +68,18 @@ class HabitManager:
             print(f"Error: Hábito {habit_name} no encontrado.")
             return False
     
+    def delete_habit(self, habit_name: str) -> bool:
+        """Elimina un hábito de la lista"""
+        initial_len = len(self.habits)
+        # Crea nueva lista excluyendo el hábito a borrar
+        self.habits = [h for h in self.habits if h.name.lower() != habit_name.lower()]
+        if len(self.habits) < initial_len: 
+            self.save_all_habits()
+            print(f"Hábito {habit_name} eliminado.")
+            return True
+        print(f"Error: Hábito {habit_name} no encontrado para eliminar.")
+        return False
+
     def save_all_habits(self):
         """Metodo interno para guardar los hábitos actuales en el archivo JSON."""
         save_habits(self.habits)
