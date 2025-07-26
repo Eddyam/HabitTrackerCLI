@@ -1,6 +1,7 @@
 # main. py
 from habit_manager import HabitManager
 from pathlib import Path
+import colorama
 
 class Colors: # Define colores para la terminal
     GREEN = "\033[92m"
@@ -20,6 +21,7 @@ def display_menu():
 
 def main():
     """Función principal que ejecuta la aplicación."""
+    if colorama: colorama.init()
     manager = HabitManager() # Crea instancia del gestor de hábitos.
 
     while True: 
@@ -28,10 +30,10 @@ def main():
 
         if choice == '1': 
             name = input("Nombre del hábito: ")
-            description = input("Descripción (opcional)")
+            description = input("Descripción (opcional): ")
             manager.add_habit(name, description) # Llama al manager para añadir un hábito.
         elif choice == '2': 
-            name = input("Nombre del hábito a marcar como completad: ")
+            name = input("Nombre del hábito a marcar como completado: ")
             manager.complete_habit(name)
         elif choice == '3': 
             manager.list_habits()
